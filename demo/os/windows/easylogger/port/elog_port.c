@@ -47,7 +47,7 @@ ElogErrCode elog_port_init(const char *path) {
     output_lock = CreateMutex(NULL, FALSE, NULL);
 
 #ifdef ELOG_FILE_ENABLE
-    elog_file_init();
+    elog_file_init(path);
 #endif
     
     return result;
