@@ -157,8 +157,8 @@ extern void elog_port_output_unlock(void);
  *
  * @return result
  */
-ElogErrCode elog_init(void) {
-    extern ElogErrCode elog_port_init(void);
+ElogErrCode elog_init(const char * path) {
+    extern ElogErrCode elog_port_init(const char * path);
     extern ElogErrCode elog_async_init(void);
 
     ElogErrCode result = ELOG_NO_ERR;
@@ -168,7 +168,7 @@ ElogErrCode elog_init(void) {
     }
 
     /* port initialize */
-    result = elog_port_init();
+    result = elog_port_init(path);
     if (result != ELOG_NO_ERR) {
         return result;
     }

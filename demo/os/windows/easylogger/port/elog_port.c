@@ -41,7 +41,7 @@ static HANDLE output_lock = NULL;
  *
  * @return result
  */
-ElogErrCode elog_port_init(void) {
+ElogErrCode elog_port_init(const char *path) {
     ElogErrCode result = ELOG_NO_ERR;
 
     output_lock = CreateMutex(NULL, FALSE, NULL);

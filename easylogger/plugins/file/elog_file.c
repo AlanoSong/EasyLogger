@@ -42,7 +42,7 @@ static bool init_ok = false;
 static FILE *fp = NULL;
 static ElogFileCfg local_cfg;
 
-ElogErrCode elog_file_init(void)
+ElogErrCode elog_file_init(const char *path)
 {
     ElogErrCode result = ELOG_NO_ERR;
     ElogFileCfg cfg;
@@ -52,7 +52,12 @@ ElogErrCode elog_file_init(void)
 
     elog_file_port_init();
 
-    cfg.name = ELOG_FILE_NAME;
+    if (path) {
+        cfg.name = path;
+    }
+    else {
+        cfg.name = ELOG_FILE_NAME;
+    }
     cfg.max_size = ELOG_FILE_MAX_SIZE;
     cfg.max_rotate = ELOG_FILE_MAX_ROTATE;
 
